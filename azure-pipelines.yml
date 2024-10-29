@@ -34,7 +34,7 @@ stages:
         deploy:
           steps:
           - script: echo "Déploiement sur la machine $(vmName)"
-  - job: "6129"
+  - job: "tata6129"
     displayName: toto
     steps:
     - script: echo "step 1 job 2"
