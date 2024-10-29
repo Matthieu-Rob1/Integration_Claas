@@ -6,16 +6,36 @@
 trigger:
 - main
 
-environment: my_computer.PCP-1147
+# environment: my_computer.PCP-1147
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+# steps:
+# - script: echo Hello, world!
+#   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#   displayName: 'Run a multi-line script'
+
+variables:
+  # resourceGroup: 'myResourceGroup'
+  vmName: 'PCP-1147'
+
+stages:
+- stage: Deploy
+  jobs:
+  - deployment: DeployToVM
+    environment: myEnvironment
+    strategy:
+      runOnce:
+        deploy:
+          runtime: 'vm'
+          targets:
+          - vm:
+              # resourceGroup: $(resourceGroup)
+              name: $(vmName)
+    steps:
+    - script: echo "Déploiement sur la machine $(vmName)"
