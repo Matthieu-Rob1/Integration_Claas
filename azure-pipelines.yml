@@ -36,6 +36,7 @@ stages:
           - script: echo "Déploiement sur la machine $(vmName)"
   - job: "tata6129"
     displayName: toto
+    container: my_computer.$(vmName)
     steps:
     - script: echo "step 1 job 2"
     - script: echo "step 2 job 2"
