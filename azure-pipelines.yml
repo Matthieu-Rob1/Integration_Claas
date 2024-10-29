@@ -28,14 +28,6 @@ stages:
 - stage: Deploy
   jobs:
   - deployment: DeployToVM
-    environment: myEnvironment
-    strategy:
-      runOnce:
-        deploy:
-          runtime: 'vm'
-          targets:
-          - vm:
-              # resourceGroup: $(resourceGroup)
-              name: $(vmName)
+    environment: my_computer.PCP-1147
     steps:
     - script: echo "Déploiement sur la machine $(vmName)"
