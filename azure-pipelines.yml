@@ -6,6 +6,8 @@
 trigger:
 - main
 
+environment: my_computer.PCP-1147
+
 pool:
   vmImage: ubuntu-latest
 
