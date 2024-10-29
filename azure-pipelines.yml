@@ -25,10 +25,10 @@ variables:
   vmName: 'PCP-1147'
 
 stages:
-- stage: Deploy
+- stage: stage
   jobs:
-  - deployment: DeployToVM
-    environment: my_computer.PCP-1147
+  - deployment: NamOfJob
+    environment: my_computer.$(vmName)
     strategy:
       runOnce:
         deploy:
