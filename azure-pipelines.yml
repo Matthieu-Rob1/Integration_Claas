@@ -34,6 +34,22 @@ stages:
         deploy:
           steps:
           - script: echo "Déploiement sur la machine $(vmName)"
+  - deployment: toto
+    environment: my_computer.$(vmName)
+    strategy: 
+      runOnce:
+        deploy:
+          steps:
+          - script: "test toto 1"
+          - script: "test toto 2"
+  - deployment: tata
+    environment: my_computer.$(vmName)
+    strategy: 
+      runOnce:
+        deploy:
+          steps:
+          - script: "test tata 1"
+          - script: "test tata 2"
   - job: "tata6129"
     displayName: toto
     pool: $(vmName)
