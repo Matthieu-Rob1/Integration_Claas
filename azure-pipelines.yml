@@ -29,5 +29,8 @@ stages:
   jobs:
   - deployment: DeployToVM
     environment: my_computer.PCP-1147
-    steps:
-    - script: echo "Déploiement sur la machine $(vmName)"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Déploiement sur la machine $(vmName)"
