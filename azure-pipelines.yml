@@ -16,20 +16,20 @@ trigger:
 variables:
   vmName: 'PCP-1147'
 
-jobs:
-- deployment: toto
-  environment: my_computer.$(vmName)
-  strategy: 
-    runOnce:
-      deploy:
-        steps:
-        # - script: echo 'toto' > ../../../../toto.txt
-        # - script: echo "test toto 2"
-        - task: PythonScript@0
-          inputs:
-            scriptSource: 'inline'
-            script: |
-              print("toto")
-              for x in range(10):
-                print("tata")
-            pythonInterpreter: '/usr/bin/python3'
+# jobs:
+# - deployment: toto
+# environment: my_computer.$(vmName)
+# strategy: 
+#   runOnce:
+#     deploy:
+steps:
+# - script: echo 'toto' > ../../../../toto.txt
+# - script: echo "test toto 2"
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      print("toto")
+      for x in range(10):
+        print("tata")
+    pythonInterpreter: '/usr/bin/python3'
