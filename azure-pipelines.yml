@@ -63,5 +63,5 @@ stages:
               script: |
                 print(toto)
                 for x in range(10):
-                print(tata)
+                  print(tata)
               pythonInterpreter: '/usr/bin/python3'
