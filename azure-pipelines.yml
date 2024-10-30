@@ -19,10 +19,13 @@ stages:
             print("tata")
         pythonInterpreter: '/usr/bin/python3'
   - job: dire_g_fini
+    dependsOn: execution_script_python
+    condition: succeeded()
     steps:
     - script: echo "j'ai fini"
 
 - stage: phase_de_deploiement
+  dependsOn: []
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/totototest')
   jobs:
     - deployment: setup_environment
