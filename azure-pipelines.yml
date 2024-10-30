@@ -26,7 +26,7 @@ stages:
 
 - stage: phase_de_deploiement
   dependsOn: []
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/totototest')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/tototest')
   jobs:
     - deployment: setup_environment
       environment: my_computer.PCP-1147
