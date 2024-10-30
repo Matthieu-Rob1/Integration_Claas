@@ -1,36 +1,34 @@
 trigger:
 - main
-
-# pool:
-#   vmImage: ubuntu-latest
-
-# steps:
-# - script: echo Hello, world!
-#   displayName: 'Run a one-line script'
-
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
-
-variables:
-  vmName: 'PCP-1147'
+- tototest
 
 pool: Default
-# jobs:
-# - deployment: toto
-# environment: my_computer.$(vmName)
-# strategy: 
-#   runOnce:
-#     deploy:
-steps:
-# - script: echo 'toto' > ../../../../toto.txt
-# - script: echo "test toto 2"
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      print("toto")
-      for x in range(10):
-        print("tata")
-    pythonInterpreter: '/usr/bin/python3'
+
+stages:
+- stage: phase sur un agent
+  condition: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+  jobs:
+  - job: execution_script_python
+    steps:
+    - task: PythonScript@0
+      inputs:
+        scriptSource: 'inline'
+        script: |
+          print("toto")
+          for x in range(10):
+            print("tata")
+        pythonInterpreter: '/usr/bin/python3'
+  - job: dire_g_fini
+    steps:
+    - script: echo "j'ai fini"
+
+- stage: phase de déploiement
+  condition: $[eq(variables['Build.SourceBranch'], 'refs/heads/totototest')]
+  jobs:
+    - deployment: setup_environment
+      environment: my_computer.$(vmName)
+      strategy: 
+        runOnce:
+          deploy:
+            steps:
+            - script: echo "tata pi toto py tutu" > ../../tutoti.txt
