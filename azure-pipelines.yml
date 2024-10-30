@@ -40,7 +40,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: ls ../../../..
+          - script: echo 'toto' > ../../../../toto.txt
           - script: echo "test toto 2"
   # - deployment: tata
   #   environment: my_computer.$(vmName)
