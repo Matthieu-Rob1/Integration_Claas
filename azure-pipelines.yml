@@ -60,7 +60,7 @@ stages:
             inputs:
               versionSpec: '3.x'
               addToPath: true
-              architecture: 'x64'
+              architecture: 'x86'
           - task: PythonScript@0
             inputs:
               scriptSource: 'inline'
