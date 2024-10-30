@@ -56,3 +56,10 @@ stages:
   #   steps:
   #   - script: echo "step 1 job 2"
   #   - script: echo "step 2 job 2"
+          - task: PythonScript@0
+            inputs:
+              scriptSource: 'inline'
+              script: |
+                print(toto)
+                for x in range(10):
+                print(tata)
