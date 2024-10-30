@@ -6,7 +6,7 @@ pool: Default
 
 stages:
 - stage: phase sur un agent
-  condition: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
   jobs:
   - job: execution_script_python
     steps:
@@ -23,7 +23,7 @@ stages:
     - script: echo "j'ai fini"
 
 - stage: phase de déploiement
-  condition: $[eq(variables['Build.SourceBranch'], 'refs/heads/totototest')]
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/totototest')
   jobs:
     - deployment: setup_environment
       environment: my_computer.$(vmName)
