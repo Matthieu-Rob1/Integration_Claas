@@ -27,32 +27,32 @@ variables:
 stages:
 - stage: stage
   jobs:
-  - deployment: NamOfJob
-    environment: my_computer.$(vmName)
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - script: echo "Déploiement sur la machine $(vmName)"
+  # - deployment: NamOfJob
+  #   environment: my_computer.$(vmName)
+  #   strategy:
+  #     runOnce:
+  #       deploy:
+  #         steps:
+  #         - script: echo "Déploiement sur la machine $(vmName)"
   - deployment: toto
     environment: my_computer.$(vmName)
     strategy: 
       runOnce:
         deploy:
           steps:
-          - script: ls
+          - script: ls ../../../..
           - script: echo "test toto 2"
-  - deployment: tata
-    environment: my_computer.$(vmName)
-    strategy: 
-      runOnce:
-        deploy:
-          steps:
-          - script: echo "test tata 1"
-          - script: echo "test tata 2"
-  - job: "tata6129"
-    displayName: toto
-    pool: $(vmName)
-    steps:
-    - script: echo "step 1 job 2"
-    - script: echo "step 2 job 2"
+  # - deployment: tata
+  #   environment: my_computer.$(vmName)
+  #   strategy: 
+  #     runOnce:
+  #       deploy:
+  #         steps:
+  #         - script: echo "test tata 1"
+  #         - script: echo "test tata 2"
+  # - job: "tata6129"
+  #   displayName: toto
+  #   pool: $(vmName)
+  #   steps:
+  #   - script: echo "step 1 job 2"
+  #   - script: echo "step 2 job 2"
