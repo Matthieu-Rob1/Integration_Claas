@@ -5,7 +5,7 @@ trigger:
 pool: Default
 
 stages:
-- stage: phase sur un agent
+- stage: phase_sur_un_agent
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
   jobs:
   - job: execution_script_python
@@ -22,7 +22,7 @@ stages:
     steps:
     - script: echo "j'ai fini"
 
-- stage: phase de déploiement
+- stage: phase_de_deploiement
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/totototest')
   jobs:
     - deployment: setup_environment
