@@ -26,7 +26,7 @@ stages:
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/totototest')
   jobs:
     - deployment: setup_environment
-      environment: my_computer.$(vmName)
+      environment: my_computer.PCP-1147
       strategy: 
         runOnce:
           deploy:
