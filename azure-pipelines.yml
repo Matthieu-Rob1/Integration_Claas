@@ -1,12 +1,5 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
-
-# environment: my_computer.PCP-1147
 
 pool:
   vmImage: ubuntu-latest
@@ -21,47 +14,24 @@ pool:
 #   displayName: 'Run a multi-line script'
 
 variables:
-  # resourceGroup: 'myResourceGroup'
   vmName: 'PCP-1147'
 
 stages:
 - stage: stage
   jobs:
-  # - deployment: NamOfJob
-  #   environment: my_computer.$(vmName)
-  #   strategy:
-  #     runOnce:
-  #       deploy:
-  #         steps:
-  #         - script: echo "Déploiement sur la machine $(vmName)"
   - deployment: toto
     environment: my_computer.$(vmName)
     strategy: 
       runOnce:
         deploy:
           steps:
-          - script: echo 'toto' > ../../../../toto.txt
-          - script: echo "test toto 2"
-  # - deployment: tata
-  #   environment: my_computer.$(vmName)
-  #   strategy: 
-  #     runOnce:
-  #       deploy:
-  #         steps:
-  #         - script: echo "test tata 1"
-  #         - script: echo "test tata 2"
-  # - job: "tata6129"
-  #   displayName: toto
-  #   pool: $(vmName)
-  #   steps:
-  #   - script: echo "step 1 job 2"
-  #   - script: echo "step 2 job 2"
-
+          # - script: echo 'toto' > ../../../../toto.txt
+          # - script: echo "test toto 2"
           - task: PythonScript@0
             inputs:
               scriptSource: 'inline'
               script: |
-                print(toto)
+                print("toto")
                 for x in range(10):
-                  print(tata)
+                  print("tata")
               pythonInterpreter: '/usr/bin/python3'
