@@ -56,11 +56,7 @@ stages:
   #   steps:
   #   - script: echo "step 1 job 2"
   #   - script: echo "step 2 job 2"
-          - task: UsePythonVersion@0
-            inputs:
-              versionSpec: '3.x'
-              addToPath: true
-              architecture: 'x86'
+
           - task: PythonScript@0
             inputs:
               scriptSource: 'inline'
@@ -68,3 +64,4 @@ stages:
                 print(toto)
                 for x in range(10):
                 print(tata)
+              pythonInterpreter: '/usr/bin/python3'
