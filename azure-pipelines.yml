@@ -16,6 +16,7 @@ trigger:
 variables:
   vmName: 'PCP-1147'
 
+pool: Default
 # jobs:
 # - deployment: toto
 # environment: my_computer.$(vmName)
