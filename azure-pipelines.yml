@@ -14,7 +14,7 @@ pool: Default
 
 stages:
 - stage: phase_sur_un_agent
-  condition: and(eq(variables['Build.CronSchedule.DisplayName'], 'lancement périodique cyclique'), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: eq(variables['Build.CronSchedule.DisplayName'], 'lancement périodique cyclique')
   jobs:
   - job: execution_script_python
     steps:
@@ -34,7 +34,7 @@ stages:
 
 - stage: phase_de_deploiement
   dependsOn: []
-  condition: and(not(eq(variables['Build.CronSchedule.DisplayName'], 'lancement périodique cyclique')), eq(variables['Build.SourceBranch'], 'refs/heads/tototest'))
+  condition: not(eq(variables['Build.CronSchedule.DisplayName'], 'lancement périodique cyclique'))
   jobs:
     - deployment: setup_environment
       environment: my_computer.PCP-1147
