@@ -1,3 +1,11 @@
+schedules:
+- cron: "*/2 * * * *"
+  displayName: lancement périodique cyclique
+  branches:
+    include:
+      - main
+  always: true
+
 trigger:
 - main
 - tototest
@@ -18,11 +26,11 @@ stages:
           for x in range(10):
             print("tata")
         pythonInterpreter: '/usr/bin/python3'
-  - job: dire_g_fini
+  - job: dire_script_reussi
     dependsOn: execution_script_python
     condition: succeeded()
     steps:
-    - script: echo "j'ai fini"
+    - script: echo "job reussi"
 
 - stage: phase_de_deploiement
   dependsOn: []
